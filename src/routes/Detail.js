@@ -14,8 +14,7 @@ function Detail() {
     ).json();
     setMovies(json.data.movies);
     setLoading(false);
-    console.log(json);
-    console.log(movies.id)
+    console.log(json.data.movies[0].id);
     console.log(id);
   }
   useEffect(() => {
@@ -26,7 +25,13 @@ function Detail() {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        null
+        <div>
+          {movies.map((movie) => (
+            <div>
+              <p>{movie.title}</p>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   )
