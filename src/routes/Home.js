@@ -13,11 +13,12 @@ function Home() {
     ).json();
     setMovies(json.data.movies);
     setLoading(false);
+    
   };
   useEffect(() => {
     getMovies();
   }, []);
-  console.log(movies);
+  
   return (
     <div>
       {loading ? ( //조건이 참인 괄호
@@ -27,6 +28,7 @@ function Home() {
             {movies.map((movie) => (
               <Movie 
                 key={movie.id}
+                id={movie.id}
                 coverImg={movie.medium_cover_image} 
                 title={movie.title} 
                 summary={movie.summary} 
