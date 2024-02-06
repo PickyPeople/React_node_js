@@ -14,9 +14,6 @@ function Detail() {
     console.log(json.data);
     setMovies(json.data.movies);
     setLoading(false);
-
-    // console.log(typeof(Number(id)));
-    // console.log(typeof(json.data.movies[0].id))
     
   }
   useEffect(() => {
@@ -31,6 +28,11 @@ function Detail() {
         <img src={judege.medium_cover_image}></img>
         <h2>{judege.title}</h2>
         <p>{judege.summary}</p>
+        <ul>
+          {judege.genres.map((g) =>(
+            <li key={g}>{g}</li>
+          ))}
+        </ul>
       </div>
     )  
   }
