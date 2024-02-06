@@ -5,33 +5,46 @@ import { useParams } from "react-router-dom/cjs/react-router-dom";
 function Detail() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
-
   const {id} = useParams();
+  
   const getMovie = async () =>{
-    // https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year
     const json = await(
       await fetch(`https://yts.mx/api/v2/list_movies.json?movie_id=${id}&minimum_rating=9&sort_by=year`)
     ).json();
+    console.log(json.data);
     setMovies(json.data.movies);
     setLoading(false);
-    console.log(json.data.movies[0].id);
-    console.log(id);
+
+    // console.log(typeof(Number(id)));
+    // console.log(typeof(json.data.movies[0].id))
+    
   }
   useEffect(() => {
     getMovie();
   },[])
+
+  function drawDetail () {
+    const judege = movies.find(movie => movie.id === Number(id));
+    console.log(judege)
+    return (
+      <div>
+        <img src={judege.medium_cover_image}></img>
+        <h2>{judege.title}</h2>
+        <p>{judege.summary}</p>
+      </div>
+    )  
+  }
+
+
+  
   return (
     <div>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
         <div>
-          {movies.map((movie) => (
-            <div>
-              <p>{movie.title}</p>
-            </div>
-          ))}
-        </div>
+          {drawDetail()}
+        </div> 
       )}
     </div>
   )
