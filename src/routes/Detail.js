@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 import ShowDetail from "./components/ShowDetail";
 
-
 function Detail() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
@@ -21,21 +20,21 @@ function Detail() {
     getMovie();
   }, [])
 
-    const judege = movies.find(movie => movie.id === Number(id));
-    console.log(judege)
-    // return (
-    //   <div>
-    //     <img src={judege.medium_cover_image}></img>
-    //     <h2>{judege.title}</h2>
-    //     <p>{judege.summary}</p>
-    //     <ul>
-    //       {judege.genres.map((g) => (
-    //         <li key={g}>{g}</li>
-    //       ))}
-    //     </ul>
-    //   </div>
-    // ) 원래는 함수를 만들어서 만들었었음
-  
+  const judege = movies.find(movie => movie.id === Number(id));
+  console.log(judege)
+
+  // return (
+  //   <div>
+  //     <img src={judege.medium_cover_image}></img>
+  //     <h2>{judege.title}</h2>
+  //     <p>{judege.summary}</p>
+  //     <ul>
+  //       {judege.genres.map((g) => (
+  //         <li key={g}>{g}</li>
+  //       ))}
+  //     </ul>
+  //   </div>
+  // ) 원래는 함수를 만들어서 만들었었음
 
   return (
     <div>
