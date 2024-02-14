@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-import Movie from "./components/Movie";
+import Movie from "../components/Movie";
+import styles from "./css/Home.module.css";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -20,11 +21,11 @@ function Home() {
   }, []);
   
   return (
-    <div>
+    <div className={styles.container}>
       {loading ? ( //조건이 참인 괄호
         <h1>Loading...</h1>
         ) : ( //조건이 거짓인 괄호 start
-          <div>
+          <div className={styles.movies}>
             {movies.map((movie) => (
               <Movie 
                 key={movie.id}
